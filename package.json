@@ -5,6 +5,10 @@
     "tap": "./tap.cjs",
     "cov": "./cov.cjs"
   },
+  "exports": {
+    "import": "./index.js",
+    "require": "./index.cjs"
+  },
   "description": "Native ESM Support for node-tap",
   "type": "module",
   "main": "index.js",
