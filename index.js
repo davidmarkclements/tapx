@@ -1,5 +1,7 @@
 import tap from 'tap'
 
+export { default as mockalicious } from 'mockalicious'
+
 export const {
   Test, Spawn, Stdin,
   spawn, sub,

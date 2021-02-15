@@ -13,13 +13,27 @@ const cov = (process.argv.indexOf('--100') > -1)
 if (Number(process.versions.node.split('.').shift()) < 14) {
   spawn(
     process.execPath,
-    [join(tap, bin.tap), ...process.argv.slice(2), '--no-cov'],
+    [
+      join(tap, bin.tap),
+      ...process.argv.slice(2),
+      '--no-cov',
+      '--node-arg=--loader=mockalicious/loader.mjs',
+      '--node-arg=--no-warnings'
+    ],
     { stdio: 'inherit', env: { ...process.env, TAP_NO_ESM: 1 } }
   )
 } else {
   spawn(
     process.execPath,
-    [c8Path, ...cov, 'node', join(tap, bin.tap), ...process.argv.slice(2), '--no-cov'],
+    [
+      c8Path,
+      ...cov,
+      'node',
+      join(tap, bin.tap), ...process.argv.slice(2),
+      '--no-cov',
+      '--node-arg=--loader=mockalicious/loader.mjs',
+      '--node-arg=--no-warnings'
+    ],
     { stdio: 'inherit', env: { ...process.env, TAP_NO_ESM: 1 } }
   )
 }

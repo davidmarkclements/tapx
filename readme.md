@@ -19,6 +19,30 @@ An additional `cov` command is also provided, which is the equivalent to `tap --
 
 This module (at least the version 0.x.x) line will be deprecated when https://github.com/tapjs/node-tap/pull/668/files lands and when node-tap has coverage support for native ESM.
 
+## ESM Mocking
+
+As of v0.1.0 `tapx` now comes integrated with [`mockalicious`](https://github.com/davidmarkclements/mockalicious).
+
+```js
+import { test, mockalicious } from 'tapx'
+
+const load = mockalicious(import.meta.url)
+
+test('..', async ({ok}) => {
+  const myModule = load('../index.js', {
+    moduleToMock: {
+      default () {
+        // mocking default export...
+      },
+      foo: 1, //mocking other exports
+    }
+  })
+  ok('hooray')
+})
+```
+
+See the [`mockalicious`](https://github.com/davidmarkclements/mockalicious) repository for more information.
+
 ## License
 
 ISC
