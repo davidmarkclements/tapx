@@ -7,7 +7,7 @@ const c8 = dirname(require.resolve('c8/package.json'))
 const { bin } = require('tap/package.json')
 const c8Path = join(c8, require('c8/package.json').bin.c8)
 const cov = (process.argv.indexOf('--100') > -1)
-  ? ['--check-coverage', '--lines 100', '--functions 100', '--branches 100']
+  ? ['--check-coverage', '--lines=100', '--functions=100', '--branches=100']
   : []
 
 if (Number(process.versions.node.split('.').shift()) < 14) {
