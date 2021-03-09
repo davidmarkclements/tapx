@@ -19,6 +19,9 @@ An additional `cov` command is also provided, which is the equivalent to `tap --
 
 This module (at least the version 0.x.x) line will be deprecated when https://github.com/tapjs/node-tap/pull/668/files lands and when node-tap has coverage support for native ESM.
 
+Snapshots are modified so that they're saved with a `.cjs` extension instead of `.js`. This prevents `"type": "module"`
+in a project's `package.json` from invalidating CommonJS `.js` files in the `tap-snapshots` folder.
+
 ## ESM Mocking
 
 As of v0.1.0 `tapx` now comes integrated with [`mockalicious`](https://github.com/davidmarkclements/mockalicious).

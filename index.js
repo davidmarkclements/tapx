@@ -30,4 +30,17 @@ export const {
   rejects, resolves, resolveMatch, resolveMatchSnapshot
 } = tap
 
+const kGetSnapshot = Object.getOwnPropertySymbols(Test.prototype).find((s) => /_getSnapshot/.test(s.toString()))
+const { constructor: Snapshot } = Test.prototype[kGetSnapshot].call({ fullname: 'dummy' })
+const kFile = Symbol('tapx-snapshot-file')
+Object.defineProperty(Snapshot.prototype, 'file', {
+  set (value) {
+    this[kFile] = value.replace(/\.js$/, '.cjs')
+    return true
+  },
+  get () {
+    return this[kFile]
+  }
+})
+
 export default tap

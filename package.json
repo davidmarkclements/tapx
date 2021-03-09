@@ -18,10 +18,10 @@
     "esm"
   ],
   "author": "@davidmarkclem",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "c8": "^7.5.0",
-    "mockalicious": "~0.0.1",
+    "mockalicious": "~0.0.4",
     "open": "^7.4.0",
     "tap": "^14.11.0"
   }
