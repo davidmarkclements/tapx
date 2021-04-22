@@ -21,7 +21,7 @@ if (Number(process.versions.node.split('.').shift()) < 14) {
       '--node-arg=--no-warnings'
     ],
     { stdio: 'inherit', env: { ...process.env, TAP_NO_ESM: 1 } }
-  )
+  ).on('exit', process.exit)
 } else {
   spawn(
     process.execPath,
@@ -35,5 +35,5 @@ if (Number(process.versions.node.split('.').shift()) < 14) {
       '--node-arg=--no-warnings'
     ],
     { stdio: 'inherit', env: { ...process.env, TAP_NO_ESM: 1 } }
-  )
+  ).on('exit', process.exit)
 }
